@@ -1,12 +1,10 @@
 const express = require('express');
-
-// const apiRouter = require('./api-router.js');
-// const configureMiddleware = require('./configure-middleware.js');
-
 const server = express();
 
-//configureMiddleware(server);
-
-//server.use('/api', apiRouter);
+const authRouter = require('./database/auth/auth-router')
+const userRouter = require('./database/users/users-router')
+server.use(express.json())
+server.use('/api/auth', authRouter);
+server.use('/api/users', userRouter)
 
 module.exports = server;
